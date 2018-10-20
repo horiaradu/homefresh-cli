@@ -23,11 +23,3 @@ module.exports = storage = {
     return storage;
   },
 };
-
-storage
-  .load()
-  .then(x => {
-    Object.assign(x.data, { a: "b" });
-    x.save();
-  })
-  .catch(e => console.error(e));

@@ -2,16 +2,27 @@ const program = require("commander");
 const package = require("./package.json");
 const OrderCommand = require("./order");
 
-program.version(package.version).description(package.description);
+const { promisify } = require("util");
+const figlet = promisify(require("figlet"));
 
-program
-  .command("order")
-  .alias("o")
-  .description("Order packages!")
-  .action(() => {
-    OrderCommand.run().subscribe(x => {
-      console.log("final answer: ", x);
-    });
+figlet("Homefresh")
+  .then(data => {
+    console.log(data);
+
+    program.version(package.version).description(package.description);
+
+    program
+      .command("order")
+      .alias("o")
+      .description("Order packages!")
+      .action(() => {
+        OrderCommand.run().subscribe(x => {
+          console.log("final answer: ", x);
+        });
+      });
+
+    program.parse(process.argv);
+  })
+  .catch(e => {
+    console.error(e);
   });
-
-program.parse(process.argv);
