@@ -12,8 +12,7 @@ module.exports = class ProductsPrompt {
   }
 
   choices({ day }) {
-    const key = day.date.format("YYYY-MM-DD");
-    return this.products[key].map(data => ({
+    return this.products[day.date].map(data => ({
       ...data,
       value: data,
     }));

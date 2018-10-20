@@ -24,7 +24,7 @@ module.exports = class DayPrompt {
       name,
       value: {
         name,
-        date: this.convertDayToDate(name),
+        date: this.convertDayToDate(name).format("YYYY-MM-DD"),
       },
     }));
   }

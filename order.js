@@ -2,7 +2,7 @@ const inquirer = require("inquirer");
 const { getProducts } = require("./api/api");
 const { DayPrompt, ProductsPrompt, AnotherOrderPrompt } = require("./prompts/index");
 const { Subject, of, from } = require("rxjs");
-const { switchMap } = require("rxjs/operators");
+const { switchMap, catchError, reduce } = require("rxjs/operators");
 
 class OrderCommand {
   constructor(products) {
@@ -35,22 +35,40 @@ class OrderCommand {
   }
 
   static run() {
-    try {
-      const products = from(getProducts());
-      // const products = of(require("./api/mock.json"));
-      return products.pipe(
-        switchMap(products => {
-          const productsMap = products.product_days.reduce((acc, data) => {
-            if (!data.can_accept_orders) return acc;
-            return Object.assign(acc, { [data.day]: data.products });
-          }, {});
-          return new OrderCommand(productsMap).create();
-        }),
-      );
-    } catch (e) {
-      return console.error(e);
-    }
+    // const products = from(getProducts());
+    const products = of(require("./api/mock.json"));
+
+    let scanCurrentDate = null;
+
+    return products.pipe(
+      switchMap(products => {
+        const productsMap = products.product_days.reduce((acc, data) => {
+          if (!data.can_accept_orders) return acc;
+          return Object.assign(acc, { [data.day]: data.products });
+        }, {});
+        return new OrderCommand(productsMap).create();
+      }),
+      reduce((acc, prompt) => {
+        const { name, answer } = prompt;
+        switch (name) {
+          case "day":
+            scanCurrentDate = answer.date;
+            return {
+              ...acc,
+              [scanCurrentDate]: [],
+            };
+          case "product":
+            return {
+              ...acc,
+              [scanCurrentDate]: [...acc[scanCurrentDate], answer],
+            };
+          default:
+            return acc;
+        }
+      }, {}),
+      catchError(e => console.error(e)),
+    );
   }
 }
 
-OrderCommand.run().subscribe(x => console.log("answer: ", x));
+OrderCommand.run().subscribe(x => console.log("final answer: ", x));
