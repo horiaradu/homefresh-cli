@@ -1,25 +1,33 @@
 const inquirer = require("inquirer");
 const { getProducts } = require("./api/api");
-const { DayPrompt, ProductsPrompt, AnotherOrderPrompt } = require("./prompts/index");
+const { DayPrompt, ProductsPrompt, AnotherOrderPrompt, CheckoutPrompt } = require("./prompts/index");
 const { Subject, of, from } = require("rxjs");
 const { switchMap, catchError, reduce } = require("rxjs/operators");
+const storage = require("./storage");
 
 module.exports = class OrderCommand {
   constructor(products) {
     this.prompts$ = new Subject();
     this.products = products;
+
+    this.storagePromise = storage.load();
   }
 
   create() {
     const process$ = inquirer.prompt(this.prompts$).ui.process;
 
-    process$.subscribe(answer => {
-      if (answer.name === "anotherOrder") {
-        if (answer.answer) {
+    process$.subscribe(prompt => {
+      if (prompt.name === "anotherOrder") {
+        if (prompt.answer) {
           this.createStep();
         } else {
-          this.prompts$.complete();
+          storage.load().then(({ data }) => this.checkout(data));
         }
+      } else if (prompt.name === "email") {
+        storage.data = {
+          email: prompt.answer,
+        };
+        storage.save().then(() => this.prompts$.complete());
       }
     });
 
@@ -34,9 +42,13 @@ module.exports = class OrderCommand {
     this.prompts$.next(new AnotherOrderPrompt().create());
   }
 
+  checkout(data) {
+    this.prompts$.next(new CheckoutPrompt(data).create());
+  }
+
   static run() {
-    const products = from(getProducts());
-    // const products = of(require("./api/mock.json"));
+    // const products = from(getProducts());
+    const products = of(require("./api/mock.json"));
 
     let scanCurrentDate = null;
 
@@ -66,7 +78,10 @@ module.exports = class OrderCommand {
               [scanCurrentDate]: [...acc[scanCurrentDate], answer],
             };
           default:
-            return acc;
+            return {
+              ...acc,
+              [name]: answer,
+            };
         }
       }, {}),
       catchError(e => console.error(e)),
