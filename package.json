@@ -1,0 +1,18 @@
+{
+  "name": "homefresh-cli",
+  "version": "1.0.0",
+  "description": "Why not order delicious HomeFresh meal kits directly from the CLI?",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^2.9.0",
+    "inquirer": "^6.2.0",
+    "ip": "^1.1.5",
+    "moment": "^2.22.2",
+    "mongoose": "^4.9.2",
+    "node-fetch": "^2.2.0"
+  },
+  "devDependencies": {
+    "prettier": "^1.14.3"
+  }
+}

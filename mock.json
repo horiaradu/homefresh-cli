@@ -1,0 +1,199 @@
+{
+  "product_days": [
+    {
+      "day": "2018-10-22",
+      "is_current_day": false,
+      "can_accept_orders": true,
+      "products": [
+        {
+          "id": 1,
+          "name": "Gnocchi proaspețide cartofi cu sos de ardei copți și măsline",
+          "description": "Conținut pachet (pentru 2 persoane): gnocchi proaspeți de cartofi, sosde ardei copți (homemade), măsline negre, parmezan, busuioc verde",
+          "food_diet": "vegetarian",
+          "price": "27,00",
+          "thumbnail": "/uploads/media_files/attachments/000/000/001/thumbnail/Gnocchi.jpg?1540035517"
+        },
+        {
+          "id": 2,
+          "name": "Cotlet de porc cu cidru, muștar Dijon și cartofi natur",
+          "description": "Conținut pachet (pentru 2 persoane): cotlet de porc, rozmarin proaspăt, usturoi, cidru de mere, muștar Dijon cu boabe întregi, smântână, cartofi albi, ulei de măsline",
+          "food_diet": "none",
+          "price": "30,00",
+          "thumbnail": "/uploads/media_files/attachments/000/000/002/thumbnail/Cotlet_de_Porc.jpg?1540035517"
+        },
+        {
+          "id": 3,
+          "name": "Piept de pui cu ardei, smântână și garnitură deorez",
+          "description": "Conținut pachet (pentru 2 persoane): orez basmati, piept de pui marinat, ardei gras roșu, ardei gras verde, ceapă galbenă, smântână, pătrunjel verde, lime, parmezan",
+          "food_diet": "none",
+          "price": "28,00",
+          "thumbnail": "/uploads/media_files/attachments/000/000/003/thumbnail/Piept_de_Pui.jpg?1540035517"
+        },
+        {
+          "id": 4,
+          "name": "Zucchini sotați cu mentă, busuioc și semințe de pin",
+          "description": "Conținut pachet (pentru 2 persoane): zucchini, mentă verde, busuioc verde, semințe de pin, usturoi, capere, oțet balsamic, ulei de măsline, ricotta",
+          "food_diet": "vegetarian",
+          "price": "25,00",
+          "thumbnail": "/uploads/media_files/attachments/000/000/004/thumbnail/Zucchini.jpg?1540035518"
+        }
+      ]
+    },
+    {
+      "day": "2018-10-23",
+      "is_current_day": false,
+      "can_accept_orders": true,
+      "products": [
+        {
+          "id": 1,
+          "name": "Gnocchi proaspeți de cartofi cu sos de ardei copți și măsline",
+          "description": "Conținut pachet (pentru 2 persoane): gnocchi proaspeți de cartofi, sos de ardei copți (homemade), măsline negre, parmezan, busuioc verde",
+          "food_diet": "vegetarian",
+          "price": "27,00",
+          "thumbnail": "/uploads/media_files/attachments/000/000/001/thumbnail/Gnocchi.jpg?1540035517"
+        },
+        {
+          "id": 2,
+          "name": "Cotlet de porc cu cidru, muștar Dijon și cartofi natur",
+          "description": "Conținut pachet (pentru 2 persoane): cotlet de porc, rozmarin proaspăt, usturoi, cidrude mere, muștar Dijon cu boabe întregi, smântână, cartofi albi, ulei de măsline",
+          "food_diet": "none",
+          "price": "30,00",
+          "thumbnail": "/uploads/media_files/attachments/000/000/002/thumbnail/Cotlet_de_Porc.jpg?1540035517"
+        },
+        {
+          "id": 3,
+          "name": "Piept de pui cu ardei, smântână și garnitură de orez",
+          "description": "Conținut pachet (pentru 2 persoane): orez basmati, piept de pui marinat, ardei gras roșu, ardei gras verde, ceapă galbenă, smântână, pătrunjel verde, lime, parmezan",
+          "food_diet": "none",
+          "price": "28,00",
+          "thumbnail": "/uploads/media_files/attachments/000/000/003/thumbnail/Piept_de_Pui.jpg?1540035517"
+        },
+        {
+          "id": 4,
+          "name": "Zucchini sotați cu mentă, busuioc și semințe de pin",
+          "description": "Conținut pachet (pentru 2 persoane): zucchini, mentă verde, busuioc verde, semințe de pin, usturoi, capere, oțet balsamic, ulei de măsline, ricotta",
+          "food_diet": "vegetarian",
+          "price": "25,00",
+          "thumbnail": "/uploads/media_files/attachments/000/000/004/thumbnail/Zucchini.jpg?1540035518"
+        }
+      ]
+    },
+    {
+      "day": "2018-10-24",
+      "is_current_day": false,
+      "can_accept_orders": true,
+      "products": [
+        {
+          "id": 1,
+          "name": "Gnocchi proaspeți de cartofi cu sos de ardei copți și măsline",
+          "description": "Conținut pachet (pentru 2 persoane): gnocchi proaspeți de cartofi, sos de ardei copți (homemade), măsline negre, parmezan, busuioc verde",
+          "food_diet": "vegetarian",
+          "price": "27,00",
+          "thumbnail": "/uploads/media_files/attachments/000/000/001/thumbnail/Gnocchi.jpg?1540035517"
+        },
+        {
+          "id": 2,
+          "name": "Cotlet de porc cu cidru, muștar Dijon și cartofi natur",
+          "description": "Conținut pachet (pentru 2 persoane): cotlet de porc, rozmarin proaspăt, usturoi, cidru de mere, muștar Dijon cu boabe întregi, smântână, cartofi albi, ulei de măsline",
+          "food_diet": "none",
+          "price": "30,00",
+          "thumbnail": "/uploads/media_files/attachments/000/000/002/thumbnail/Cotlet_de_Porc.jpg?1540035517"
+        },
+        {
+          "id": 3,
+          "name": "Piept de pui cu ardei, smântână și garnitură de orez",
+          "description": "Conținut pachet (pentru 2 persoane): orez basmati, piept de pui marinat, ardei gras roșu, ardei gras verde, ceapă galbenă, smântână, pătrunjel verde, lime, parmezan",
+          "food_diet": "none",
+          "price": "28,00",
+          "thumbnail": "/uploads/media_files/attachments/000/000/003/thumbnail/Piept_de_Pui.jpg?1540035517"
+        },
+        {
+          "id": 4,
+          "name": "Zucchini sotați cu mentă, busuioc și semințe de pin",
+          "description": "Conținut pachet (pentru 2 persoane): zucchini, mentă verde, busuioc verde, semințe de pin, usturoi, capere, oțet balsamic, ulei de măsline, ricotta",
+          "food_diet": "vegetarian",
+          "price": "25,00",
+          "thumbnail": "/uploads/media_files/attachments/000/000/004/thumbnail/Zucchini.jpg?1540035518"
+        }
+      ]
+    },
+    {
+      "day": "2018-10-25",
+      "is_current_day": false,
+      "can_accept_orders": true,
+      "products": [
+        {
+          "id": 1,
+          "name": "Gnocchi proaspeți de cartofi cu sos de ardei copți și măsline",
+          "description": "Conținut pachet (pentru 2 persoane): gnocchi proaspeți de cartofi, sos de ardei copți (homemade), măsline negre, parmezan, busuioc verde",
+          "food_diet": "vegetarian",
+          "price": "27,00",
+          "thumbnail": "/uploads/media_files/attachments/000/000/001/thumbnail/Gnocchi.jpg?1540035517"
+        },
+        {
+          "id": 2,
+          "name": "Cotlet de porc cu cidru, muștar Dijon și cartofi natur",
+          "description": "Conținut pachet (pentru 2 persoane): cotlet de porc, rozmarin proaspăt, usturoi, cidru de mere, muștar Dijon cu boabe întregi, smântână, cartofi albi, ulei de măsline",
+          "food_diet": "none",
+          "price": "30,00",
+          "thumbnail": "/uploads/media_files/attachments/000/000/002/thumbnail/Cotlet_de_Porc.jpg?1540035517"
+        },
+        {
+          "id": 3,
+          "name": "Piept de pui cu ardei, smântână și garnitură de orez",
+          "description": "Conținut pachet (pentru 2 persoane): orez basmati, piept de pui marinat, ardei gras roșu, ardei gras verde, ceapă galbenă, smântână, pătrunjel verde, lime, parmezan",
+          "food_diet": "none",
+          "price": "28,00",
+          "thumbnail": "/uploads/media_files/attachments/000/000/003/thumbnail/Piept_de_Pui.jpg?1540035517"
+        },
+        {
+          "id": 4,
+          "name": "Zucchini sotați cu mentă, busuioc și semințe de pin",
+          "description": "Conținut pachet (pentru 2 persoane): zucchini, mentă verde, busuioc verde, semințe de pin, usturoi, capere, oțet balsamic, ulei de măsline, ricotta",
+          "food_diet": "vegetarian",
+          "price": "25,00",
+          "thumbnail": "/uploads/media_files/attachments/000/000/004/thumbnail/Zucchini.jpg?1540035518"
+        }
+      ]
+    },
+    {
+      "day": "2018-10-26",
+      "is_current_day": false,
+      "can_accept_orders": true,
+      "products": [
+        {
+          "id": 1,
+          "name": "Gnocchi proaspeți de cartofi cu sos de ardei copți și măsline",
+          "description": "Conținut pachet (pentru 2 persoane): gnocchi proaspeți de cartofi, sos de ardei copți (homemade), măsline negre, parmezan, busuioc verde",
+          "food_diet": "vegetarian",
+          "price": "27,00",
+          "thumbnail": "/uploads/media_files/attachments/000/000/001/thumbnail/Gnocchi.jpg?1540035517"
+        },
+        {
+          "id": 2,
+          "name": "Cotlet de porc cu cidru, muștar Dijon și cartofi natur",
+          "description": "Conținut pachet (pentru 2 persoane): cotlet de porc, rozmarin proaspăt, usturoi, cidru de mere, muștar Dijon cu boabe întregi, smântână, cartofi albi, ulei de măsline",
+          "food_diet": "none",
+          "price": "30,00",
+          "thumbnail": "/uploads/media_files/attachments/000/000/002/thumbnail/Cotlet_de_Porc.jpg?1540035517"
+        },
+        {
+          "id": 3,
+          "name": "Piept de pui cu ardei, smântână și garnitură de orez",
+          "description": "Conținut pachet (pentru 2 persoane): orez basmati, piept de pui marinat, ardei gras roșu, ardei gras verde, ceapă galbenă, smântână, pătrunjel verde, lime, parmezan",
+          "food_diet": "none",
+          "price": "28,00",
+          "thumbnail": "/uploads/media_files/attachments/000/000/003/thumbnail/Piept_de_Pui.jpg?1540035517"
+        },
+        {
+          "id": 4,
+          "name": "Zucchini sotați cu mentă, busuioc și semințe de pin",
+          "description": "Conținut pachet (pentru 2 persoane): zucchini, mentă verde, busuioc verde, semințe de pin, usturoi, capere, oțet balsamic, ulei de măsline, ricotta",
+          "food_diet": "vegetarian",
+          "price": "25,00",
+          "thumbnail": "/uploads/media_files/attachments/000/000/004/thumbnail/Zucchini.jpg?1540035518"
+        }
+      ]
+    }
+  ]
+}
