@@ -10,7 +10,8 @@
     "ip": "^1.1.5",
     "moment": "^2.22.2",
     "mongoose": "^4.9.2",
-    "node-fetch": "^2.2.0"
+    "node-fetch": "^2.2.0",
+    "rxjs": "^6.3.3"
   },
   "devDependencies": {
     "prettier": "^1.14.3"

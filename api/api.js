@@ -5,7 +5,7 @@ const API_URL = "http://api.homefresh.local:3000/v1";
 
 module.exports = {
   getProducts() {
-    return fetch(`${API_URL}/product-days.json`).then(response => response.json().product_days);
+    return fetch(`${API_URL}/product-days.json`).then(response => response.json());
   },
   getDeliveryCities() {
     return axios.get(`${API_URL}/delivery-cities.json`);
