@@ -1,8 +1,8 @@
 const moment = require("moment");
 
 module.exports = class DayPrompt {
-  constructor() {
-    this.MAPPING = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+  constructor(products) {
+    this.availableDates = Object.keys(products).filter(day => products[day].length);
   }
 
   create() {
@@ -16,32 +16,17 @@ module.exports = class DayPrompt {
   }
 
   choices() {
-    let day = this.today();
-    if (day == 5 || day == 6) return [];
-
-    if (day == 7) day = 0;
-    return this.MAPPING.filter((_, idx) => idx >= day).map(name => ({
-      name,
-      value: {
+    return this.availableDates.map(date => {
+      const day = moment(date, "YYYY-MM-DD").day();
+      const name = moment.weekdays(day);
+      return {
         name,
-        date: this.convertDayToDate(name).format("YYYY-MM-DD"),
-      },
-    }));
+        value: { name, date },
+      };
+    });
   }
 
   defaultChoice() {
-    const tomorrow = this.today() + 1;
-    return this.MAPPING[tomorrow - 1];
-  }
-
-  convertDayToDate(day) {
-    const result = moment().day(day);
-    if (this.today() >= result.day()) return result.add(7, "days");
-    return result;
-  }
-
-  today() {
-    // return moment().day(); // 1 - 7
-    return 7;
+    return this.choices()[0];
   }
 };

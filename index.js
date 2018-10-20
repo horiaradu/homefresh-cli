@@ -1,14 +1,17 @@
 const program = require("commander");
 const package = require("./package.json");
+const OrderCommand = require("./order");
 
 program.version(package.version).description(package.description);
 
 program
-  .command("tomorrow [count]")
-  .alias("t")
-  .description("Order packages for tomorrow")
-  .action((count = 1) => {
-    console.log(count);
+  .command("order")
+  .alias("o")
+  .description("Order packages!")
+  .action(() => {
+    OrderCommand.run().subscribe(x => {
+      console.log("final answer: ", x);
+    });
   });
 
 program.parse(process.argv);

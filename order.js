@@ -4,7 +4,7 @@ const { DayPrompt, ProductsPrompt, AnotherOrderPrompt } = require("./prompts/ind
 const { Subject, of, from } = require("rxjs");
 const { switchMap, catchError, reduce } = require("rxjs/operators");
 
-class OrderCommand {
+module.exports = class OrderCommand {
   constructor(products) {
     this.prompts$ = new Subject();
     this.products = products;
@@ -29,23 +29,26 @@ class OrderCommand {
   }
 
   createStep() {
-    this.prompts$.next(new DayPrompt().create());
+    this.prompts$.next(new DayPrompt(this.products).create());
     this.prompts$.next(new ProductsPrompt(this.products).create());
     this.prompts$.next(new AnotherOrderPrompt().create());
   }
 
   static run() {
-    // const products = from(getProducts());
-    const products = of(require("./api/mock.json"));
+    const products = from(getProducts());
+    // const products = of(require("./api/mock.json"));
 
     let scanCurrentDate = null;
 
     return products.pipe(
       switchMap(products => {
-        const productsMap = products.product_days.reduce((acc, data) => {
-          if (!data.can_accept_orders) return acc;
-          return Object.assign(acc, { [data.day]: data.products });
-        }, {});
+        const productsMap = products.product_days.reduce(
+          (acc, data) => ({
+            ...acc,
+            [data.day]: data.can_accept_orders ? data.products : [],
+          }),
+          {},
+        );
         return new OrderCommand(productsMap).create();
       }),
       reduce((acc, prompt) => {
@@ -69,6 +72,4 @@ class OrderCommand {
       catchError(e => console.error(e)),
     );
   }
-}
-
-OrderCommand.run().subscribe(x => console.log("final answer: ", x));
+};
