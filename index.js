@@ -5,6 +5,13 @@ const { OrderCommand, CheckoutCommand } = require("./commands");
 const { promisify } = require("util");
 const figlet = promisify(require("figlet"));
 
+const ora = require("ora");
+
+const { getProducts, getDeliveryCities, getPickupLocations } = require("./api/api");
+
+const { from, forkJoin } = require("rxjs");
+const { switchMap, catchError, reduce, tap } = require("rxjs/operators");
+
 figlet("Homefresh")
   .then(data => {
     console.log(data);
@@ -16,8 +23,18 @@ figlet("Homefresh")
       .alias("o")
       .description("Order packages!")
       .action(() => {
-        OrderCommand.run().subscribe(order => {
-          CheckoutCommand.run(order);
+        const menuLoader = ora("Loading menu").start();
+        const products$ = from(getProducts());
+        const cities$ = from(getDeliveryCities());
+        const pickups$ = from(getPickupLocations());
+
+        forkJoin(products$, cities$, pickups$).subscribe(([products, cities, pickups]) => {
+          menuLoader.stop();
+          return OrderCommand.run(products, cities, pickups).subscribe(async order => {
+            const submitLoader = ora("Placing your order").start();
+            await CheckoutCommand.run(order);
+            return submitLoader.stop();
+          });
         });
       });
 

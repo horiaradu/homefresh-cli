@@ -12,6 +12,7 @@
     "moment": "^2.22.2",
     "mongoose": "^4.9.2",
     "node-fetch": "^2.2.0",
+    "ora": "^3.0.0",
     "rxjs": "^6.3.3"
   },
   "devDependencies": {

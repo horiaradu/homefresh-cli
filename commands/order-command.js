@@ -1,8 +1,7 @@
 const inquirer = require("inquirer");
-const { getProducts, getDeliveryCities, getPickupLocations } = require("../api/api");
 const { DayPrompt, ProductsPrompt, AnotherOrderPrompt, CheckoutPrompts } = require("../prompts/index");
-const { Subject, of, from, forkJoin } = require("rxjs");
-const { switchMap, catchError, reduce, tap } = require("rxjs/operators");
+const { Subject } = require("rxjs");
+const { catchError, reduce, tap } = require("rxjs/operators");
 const storage = require("../storage");
 
 module.exports = class OrderCommand {
@@ -45,25 +44,17 @@ module.exports = class OrderCommand {
     new CheckoutPrompts(userData, this.cities, this.pickups).create().forEach(p => this.prompts$.next(p));
   }
 
-  static run() {
-    const products$ = from(getProducts());
-    const cities$ = from(getDeliveryCities());
-    const pickups$ = from(getPickupLocations());
-    // const products = of(require("../api/mock.json"));
-
+  static run(products, cities, pickups) {
     let scanCurrentDate = null;
 
-    return forkJoin(products$, cities$, pickups$).pipe(
-      switchMap(([products, cities, pickups]) => {
-        const productsMap = products.product_days.reduce(
-          (acc, data) => ({
-            ...acc,
-            [data.day]: data.can_accept_orders ? data.products : [],
-          }),
-          {},
-        );
-        return new OrderCommand(productsMap, cities.delivery_cities, pickups.pickup_locations).create();
+    const productsMap = products.product_days.reduce(
+      (acc, data) => ({
+        ...acc,
+        [data.day]: data.can_accept_orders ? data.products : [],
       }),
+      {},
+    );
+    return new OrderCommand(productsMap, cities.delivery_cities, pickups.pickup_locations).create().pipe(
       reduce(
         (acc, prompt) => {
           const { name, answer } = prompt;

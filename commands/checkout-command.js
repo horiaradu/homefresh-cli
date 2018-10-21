@@ -1,3 +1,5 @@
+const { createOrder } = require("../api/api");
+
 module.exports = class CheckoutCommand {
   constructor(order) {
     this.order = order;
@@ -5,7 +7,6 @@ module.exports = class CheckoutCommand {
 
   run() {
     const payload = {
-      finalize_order: true,
       order: {
         accept_tos: true,
         email: this.order.email,
@@ -17,7 +18,7 @@ module.exports = class CheckoutCommand {
       },
     };
 
-    console.log(JSON.stringify(payload));
+    return createOrder(payload);
   }
 
   productsPayload() {
