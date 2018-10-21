@@ -7,11 +7,12 @@ module.exports = {
   getProducts() {
     return fetch(`${API_URL}/product-days.json`).then(response => response.json());
   },
+
   getDeliveryCities() {
-    return axios.get(`${API_URL}/delivery-cities.json`);
+    return fetch(`${API_URL}/delivery-cities.json`).then(response => response.json());
   },
 
   getPickupLocations() {
-    return axios.get(`${API_URL}/pickup-locations.json`);
+    return fetch(`${API_URL}/pickup-locations.json`).then(response => response.json());
   },
 };

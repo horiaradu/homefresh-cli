@@ -16,7 +16,12 @@ module.exports = storage = {
     const exists = await existsAsync(filename);
     if (exists) {
       const content = await readFileAsync(filename);
-      storage.data = JSON.parse(content);
+      try {
+        storage.data = JSON.parse(content);
+      } catch (e) {
+        console.error(e);
+        storage.data = {};
+      }
     } else {
       await writeFileAsync(filename, JSON.stringify({}));
     }

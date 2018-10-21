@@ -1,6 +1,6 @@
 const program = require("commander");
 const package = require("./package.json");
-const OrderCommand = require("./order");
+const { OrderCommand, CheckoutCommand } = require("./commands");
 
 const { promisify } = require("util");
 const figlet = promisify(require("figlet"));
@@ -16,8 +16,8 @@ figlet("Homefresh")
       .alias("o")
       .description("Order packages!")
       .action(() => {
-        OrderCommand.run().subscribe(x => {
-          console.log("final answer: ", x);
+        OrderCommand.run().subscribe(order => {
+          CheckoutCommand.run(order);
         });
       });
 
