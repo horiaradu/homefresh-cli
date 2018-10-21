@@ -17,6 +17,7 @@ module.exports = {
   },
 
   async createOrder(body) {
+    body.order.user_ip = ip.address();
     const createResponse = await fetch(`${API_URL}/orders.json`, {
       method: "post",
       body: JSON.stringify(body),
