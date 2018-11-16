@@ -1,7 +1,7 @@
 const ip = require("ip");
 const fetch = require("node-fetch");
-// const API_URL = "https://api.homefresh.ro/v1";
-const API_URL = "http://api.homefresh.local:3000/v1";
+const API_URL = "https://api.homefresh.ro/v1";
+// const API_URL = "http://api.homefresh.local:3000/v1";
 
 module.exports = {
   getProducts() {

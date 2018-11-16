@@ -1,6 +1,6 @@
 {
   "name": "homefresh-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Why not order delicious HomeFresh meal kits directly from the CLI?",
   "main": "index.js",
   "license": "MIT",
@@ -17,5 +17,8 @@
   },
   "devDependencies": {
     "prettier": "^1.14.3"
+  },
+  "bin": {
+    "homefresh": "./index.js"
   }
 }
