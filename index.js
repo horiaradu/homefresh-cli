@@ -33,6 +33,10 @@ figlet("Homefresh")
         forkJoin(products$, cities$, pickups$).subscribe(([products, cities, pickups]) => {
           menuLoader.stop();
           return OrderCommand.run(products, cities, pickups).subscribe(async order => {
+            if (!order.confirm) {
+              console.log("Sorry!");
+              return;
+            }
             const submitLoader = ora("Placing your order").start();
             await CheckoutCommand.run(order);
             return submitLoader.stop();

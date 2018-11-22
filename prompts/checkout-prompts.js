@@ -42,6 +42,7 @@ module.exports = class CheckoutPrompts {
         when: ({ delivery_option }) => delivery_option === "pickup",
         validate: this.validator("pickup address"),
       },
+      { type: "confirm", name: "confirm", message: "Are you sure you want to order?", default: true },
     ];
   }
 };
