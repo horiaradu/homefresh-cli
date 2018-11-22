@@ -5,6 +5,10 @@ module.exports = class CheckoutPrompts {
     this.pickups = pickups;
   }
 
+  validator(inputName) {
+    return value => (value.length ? true : `Please supply your ${inputName}`);
+  }
+
   create() {
     const cityChoices = this.cities.map(city => ({ name: city.name, value: city }));
     const pickupChoices = this.pickups.map(pickup => ({
@@ -12,10 +16,10 @@ module.exports = class CheckoutPrompts {
       value: { id: pickup.id, name: pickup.name },
     }));
     return [
-      { type: "input", name: "email", default: this.userData.email },
-      { type: "input", name: "first_name", default: this.userData.first_name },
-      { type: "input", name: "last_name", default: this.userData.last_name },
-      { type: "input", name: "phone", default: this.userData.phone },
+      { type: "input", name: "email", default: this.userData.email, validate: this.validator("email") },
+      { type: "input", name: "first_name", default: this.userData.first_name, validate: this.validator("first name") },
+      { type: "input", name: "last_name", default: this.userData.last_name, validate: this.validator("last name") },
+      { type: "input", name: "phone", default: this.userData.phone, validate: this.validator("phone") },
       {
         type: "list",
         name: "delivery_city",
@@ -28,6 +32,7 @@ module.exports = class CheckoutPrompts {
         name: "office_address",
         default: this.userData.office_address,
         when: ({ delivery_option }) => delivery_option === "office",
+        validate: this.validator("office address"),
       },
       {
         type: "list",
@@ -35,6 +40,7 @@ module.exports = class CheckoutPrompts {
         choices: pickupChoices,
         default: pickupChoices[0],
         when: ({ delivery_option }) => delivery_option === "pickup",
+        validate: this.validator("pickup address"),
       },
     ];
   }
