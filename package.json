@@ -1,6 +1,6 @@
 {
   "name": "homefresh-cli",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Why not order delicious HomeFresh meal kits directly from the CLI?",
   "main": "index.js",
   "license": "MIT",
