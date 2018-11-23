@@ -12,8 +12,10 @@ module.exports = class ProductsPrompt {
   }
 
   choices({ day }) {
+    console.log(this.products[day.date]);
     return this.products[day.date].map(data => ({
       ...data,
+      name: `${data.name} (${data.price})`,
       value: data,
     }));
   }

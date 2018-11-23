@@ -4,8 +4,8 @@ module.exports = class PrintImagesCommand {
   static run(products) {
     const options = {
       fit: "box",
-      width: 20,
-      height: 20,
+      width: 80,
+      height: 80,
     };
     const count = products.product_days.length;
     const images = products.product_days[count - 1].products.map(p => [p.name, p.thumbnail]);
